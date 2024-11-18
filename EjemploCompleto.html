@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es"> <!-- Indica que el idioma de la página es español. -->
+<head>
+  <meta charset="UTF-8"> <!-- Codificación de caracteres para soportar acentos y caracteres especiales. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Garantiza un diseño responsive para dispositivos móviles. -->
+  <title>Ejemplo de Página Web Accesible</title> <!-- Título descriptivo que ayuda a los usuarios a identificar el contenido. -->
+  <style>
+    /* Estilos básicos */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 15px;
+    }
+
+    nav ul li {
+      position: relative; /* Necesario para manejar menús desplegables. */
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      background-color: #444;
+      margin-top: 5px;
+      padding: 10px;
+      list-style: none;
+      z-index: 100;
+    }
+
+    nav ul li:hover ul {
+      display: block; /* Muestra el menú fly-out al pasar el mouse. */
+    }
+
+    .dark-mode {
+      background-color: #000;
+      color: #fff;
+    }
+
+    form {
+      margin: 20px;
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    form input,
+    form textarea,
+    form button {
+      display: block;
+      margin-bottom: 15px;
+      width: 100%;
+      max-width: 400px;
+      padding: 10px;
+    }
+
+    form input[type="submit"] {
+      background-color: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .error-message {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <!-- Encabezado principal -->
+  <header role="banner"> <!-- Define el encabezado principal del sitio web. -->
+    <h1>Ejemplo de Página Web Accesible</h1> <!-- Título principal que describe el contenido de la página. -->
+  </header>
+
+  <!-- Barra de navegación -->
+  <nav role="navigation" aria-label="Barra de navegación principal"> <!-- Área de navegación principal con un título accesible. -->
+    <ul>
+      <li><a href="#inicio">Inicio</a></li> <!-- Enlace claro y accesible a la sección de inicio. -->
+      <li><a href="#contenido">Contenido</a></li> <!-- Enlace a la sección de contenido principal. -->
+      <li>
+        <a href="#">Servicios</a>
+        <ul>
+          <li><a href="#servicio1">Servicio 1</a></li> <!-- Submenú de servicios con enlaces claros. -->
+          <li><a href="#servicio2">Servicio 2</a></li>
+        </ul>
+      </li>
+      <li><a href="#contacto">Contacto</a></li> <!-- Enlace a la nueva sección de contacto. -->
+    </ul>
+  </nav>
+
+  <!-- Contenido principal -->
+  <main role="main"> <!-- Define esta sección como el contenido principal. -->
+    <section id="inicio">
+      <h2>Bienvenidos</h2>
+      <p>Esta es una página web diseñada con accesibilidad en mente.</p>
+      <button id="dark-mode-toggle" aria-pressed="false" aria-label="Activar modo oscuro">Modo oscuro</button> <!-- Botón accesible para alternar el modo oscuro. -->
+    </section>
+
+    <section id="contenido">
+      <h2>Contenido Multimedia</h2>
+      <!-- Imagen accesible -->
+      <img src="img/imagen.jpeg" alt="Descripción breve de la imagen"> <!-- Proporciona un texto alternativo para usuarios con discapacidades visuales. -->
+
+      <!-- Video accesible -->
+      <video controls aria-label="Video descriptivo sobre accesibilidad">
+        <source src="video.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+      </video>
+
+      <!-- Audio accesible -->
+      <audio controls aria-label="Audio descriptivo sobre accesibilidad">
+        <source src="audio.mp3" type="audio/mpeg">
+        Tu navegador no soporta la reproducción de audio.
+      </audio>
+    </section>
+
+    <!-- Carrusel accesible -->
+    <section aria-labelledby="carousel-heading">
+      <h2 id="carousel-heading">Carrusel de imágenes</h2>
+      <div class="carousel" role="region" aria-roledescription="carrusel" aria-live="polite">
+        <img src="img/imagen1.jpeg" alt="Primera imagen del carrusel">
+        <img src="img/imagen2.jpeg" alt="Segunda imagen del carrusel">
+        <img src="img/imagen3.jpeg" alt="Tercera imagen del carrusel">
+      </div>
+      <div class="carousel-controls">
+        <button class="prev" aria-label="Imagen anterior">Anterior</button>
+        <button class="next" aria-label="Siguiente imagen">Siguiente</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Sección de contacto -->
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <form id="contact-form" aria-describedby="form-description">
+      <p id="form-description">Por favor, rellene los campos requeridos marcados con un asterisco (*).</p> <!-- Instrucción clara del formulario. -->
+      <label for="name">Nombre*</label>
+      <input type="text" id="name" name="name" aria-required="true">
+
+      <label for="email">Correo Electrónico*</label>
+      <input type="email" id="email" name="email" aria-required="true">
+
+      <label for="message">Mensaje</label>
+      <textarea id="message" name="message" rows="5"></textarea>
+
+      <input type="submit" value="Enviar">
+      <div id="error-message" class="error-message" aria-live="assertive"></div> <!-- Mensajes de error accesibles para lectores de pantalla. -->
+    </form>
+  </section>
+
+  <!-- Pie de página -->
+  <footer role="contentinfo"> <!-- Define el pie de página con información adicional del sitio. -->
+    <p>&copy; 2024 Página Web Accesible</p>
+  </footer>
+
+  <script>
+    // Botón de modo oscuro
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    darkModeToggle.addEventListener('click', () => {
+      const isDarkMode = document.body.classList.toggle('dark-mode');
+      darkModeToggle.setAttribute('aria-pressed', isDarkMode);
+      darkModeToggle.setAttribute('aria-label', isDarkMode ? 'Desactivar modo oscuro' : 'Activar modo oscuro');
+    });
+
+    // Funcionalidad del carrusel
+    const carousel = document.querySelector('.carousel');
+    const images = carousel.querySelectorAll('img');
+    const prevButton = document.querySelector('.carousel-controls .prev');
+    const nextButton = document.querySelector('.carousel-controls .next');
+    let currentIndex = 0;
+
+    function updateCarousel(index) {
+      images.forEach((img, i) => {
+        img.style.transform = `translateX(${(i - index) * 100}%)`;
+      });
+    }
+
+    prevButton.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      updateCarousel(currentIndex);
+    });
+
+    nextButton.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateCarousel(currentIndex);
+    });
+
+    updateCarousel(currentIndex); // Inicializar el carrusel
+
+    // Validación de formulario accesible
+    const form = document.getElementById('contact-form');
+    const errorMessage = document.getElementById('error-message');
+
+    form.addEventListener('submit', (e) => {
+      errorMessage.textContent = ''; // Limpia mensajes de error previos
+      let hasError = false;
+
+      const name = form.querySelector('#name').value.trim();
+      const email = form.querySelector('#email').value.trim();
+
+      if (!name) {
+        errorMessage.textContent = 'El campo Nombre es obligatorio.';
+        hasError = true;
+      } else if (!email || !email.includes('@')) {
+        errorMessage.textContent = 'Por favor, introduzca un correo electrónico válido.';
+        hasError = true;
+      }
+
+      if (hasError) {
+        e.preventDefault(); // Evita que el formulario se envíe si hay errores.
+      }
+    });
+  </script>
+</body>
+</html>

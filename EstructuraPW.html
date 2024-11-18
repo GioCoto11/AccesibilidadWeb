@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es"> <!-- Define el idioma principal de la página como español, permitiendo a los lectores de pantalla interpretarlo adecuadamente. -->
+<head>
+  <meta charset="UTF-8"> <!-- Especifica la codificación de caracteres como UTF-8 para que se representen correctamente todos los caracteres. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ajusta el ancho de la página en función del dispositivo del usuario, 
+  mejorando la accesibilidad en dispositivos móviles. -->
+  <title>Título accesible de la página</title> <!-- Título descriptivo que ayuda a los usuarios y motores de búsqueda a identificar el contenido de la 
+  página. -->
+</head>
+<body>
+    <header role="banner"> <!-- `role="banner"` indica que esta sección actúa como el encabezado principal de la página. Esto es útil para que las 
+        tecnologías de asistencia identifiquen la estructura de la página y permita a los usuarios localizar rápidamente el encabezado. -->
+        <nav role="navigation" aria-label="Menú principal"> <!-- `role="navigation"` define esta área como una sección de navegación, ayudando a los
+             usuarios de lectores de pantalla a identificar esta sección como el menú de navegación de la página. -->
+          <!-- `aria-label="Menú principal"` proporciona una etiqueta accesible a la navegación, permitiendo que los lectores de pantalla describan 
+           este menú como el "Menú principal". Esto mejora la claridad sobre la función de esta sección para los usuarios. -->
+          <ul>
+            <!-- Lista de elementos de navegación -->
+            <li><a href="#home">Inicio</a></li> <!-- `href="#home"` permite a los usuarios desplazarse directamente a la sección con el id `home`, 
+            facilitando la navegación rápida dentro de la misma página. -->
+            <li><a href="#about">Sobre nosotros</a></li> <!-- Cada enlace interno usa `href` para apuntar a los `id` de las secciones correspondientes, 
+            haciendo que el sitio sea más fácil de explorar con el teclado. -->
+            <li><a href="#services">Servicios</a></li> <!-- Los enlaces son de tipo “ancla” y, al tener un texto descriptivo, ayudan a los usuarios a
+             comprender la acción o destino de cada enlace. -->
+            <li><a href="#contact">Contacto</a></li>
+          </ul>
+        </nav>
+      </header>
+      
+      <main role="main"> <!-- `role="main"` define esta sección como el contenido principal de la página. Esto permite a los lectores de pantalla 
+        y a las tecnologías de asistencia identificar y saltar directamente a esta sección principal. -->
+  
+        <section id="home" role="region" aria-labelledby="home-heading"> <!-- `role="region"` define una sección como un área independiente del 
+            contenido. `aria-labelledby="home-heading"` asocia la región con el encabezado `home-heading` para que los lectores de pantalla puedan 
+            anunciar el propósito de esta sección. -->
+          <h1 id="home-heading">Bienvenidos</h1> <!-- `id="home-heading"` proporciona un identificador único que se utiliza con `aria-labelledby` 
+          para mejorar la accesibilidad. El encabezado `<h1>` representa el título principal de esta sección. -->
+          <p>Contenido principal de la página de inicio.</p> <!-- Párrafo con contenido descriptivo para esta sección, que es parte del contenido 
+          accesible de bienvenida. -->
+        </section>
+      
+        <section id="about" role="region" aria-labelledby="about-heading"> <!-- `role="region"` y `aria-labelledby="about-heading"` facilitan que 
+            los lectores de pantalla anuncien esta sección como una región específica titulada "Sobre nosotros". -->
+          <h2 id="about-heading">Sobre nosotros</h2> <!-- `id="about-heading"` sirve como referencia para `aria-labelledby`, conectando el título 
+          con la sección "Sobre nosotros". -->
+          <p>Información sobre la organización.</p> <!-- Descripción informativa sobre la organización que contribuye a la claridad de la sección. -->
+        </section>
+      
+        <section id="services" role="region" aria-labelledby="services-heading"> <!-- `role="region"` y `aria-labelledby="services-heading"` 
+            hacen que esta sección se identifique como una región independiente con el nombre "Nuestros servicios". -->
+          <h2 id="services-heading">Nuestros servicios</h2> <!-- `id="services-heading"` es un identificador para asociar este encabezado con 
+          la sección "Nuestros servicios" para facilitar la navegación. -->
+          <p>Descripción de los servicios ofrecidos.</p> <!-- Breve descripción de los servicios, que proporciona contexto adicional en la 
+          navegación de contenido. -->
+        </section>
+      
+        <section id="contact" role="region" aria-labelledby="contact-heading"> <!-- `role="region"` y `aria-labelledby="contact-heading"` 
+            identifican esta sección como un área independiente con el encabezado "Contacto". -->
+          <h2 id="contact-heading">Contacto</h2> <!-- `id="contact-heading"` asocia este encabezado con la sección "Contacto". -->
+          
+          <!-- Formulario de contacto accesible -->
+          <form id="contact-form" aria-describedby="form-instructions"> <!-- `aria-describedby="form-instructions"` enlaza el formulario con 
+            las instrucciones, indicando que todos los campos son obligatorios. -->
+            <p id="form-instructions">Todos los campos son obligatorios.</p> <!-- Instrucción clara que indica a los usuarios la obligatoriedad 
+            de completar todos los campos. -->
+            
+            <!-- Campo de entrada para el nombre del usuario -->
+            <label for="name">Nombre:</label> <!-- `for="name"` asocia esta etiqueta con el campo de entrada de texto `name`, lo que ayuda a 
+            los usuarios a entender el propósito del campo. -->
+            <input type="text" id="name" name="name" aria-required="true"> <!-- `aria-required="true"` señala que este campo de entrada es 
+            obligatorio, facilitando su comprensión para los usuarios de tecnologías de asistencia. -->
+      
+            <!-- Campo de entrada para el correo electrónico -->
+            <label for="email">Correo electrónico:</label> <!-- `for="email"` asocia esta etiqueta con el campo de entrada de correo electrónico, 
+            describiendo su función. -->
+            <input type="email" id="email" name="email" aria-required="true"> <!-- `aria-required="true"` indica que el campo de correo electrónico 
+            es obligatorio, lo cual es útil para los usuarios que navegan mediante lectores de pantalla. -->
+      
+            <!-- Botón para enviar el formulario -->
+            <button type="submit">Enviar</button> <!-- Botón de envío claro y accesible. El texto directo ayuda a los usuarios a entender su 
+            función sin ambigüedades. -->
+          </form>
+        </section>
+      </main>
+      
+
+      <footer role="contentinfo"> <!-- `role="contentinfo"` define esta sección como el pie de página de la página. Esto permite a 
+        las tecnologías de asistencia, como los lectores de pantalla, reconocerla como el área que contiene la información adicional o 
+        de autoría del sitio. -->
+        <p>&copy; 2024 Mi Sitio Web</p> <!-- Este párrafo proporciona información de derechos de autor o autoría del sitio. Es importante 
+        para los usuarios que desean saber sobre la propiedad y el año de publicación o actualización del sitio. -->
+      </footer>
+      
+</body>
+</html>
